@@ -51,6 +51,9 @@ export const PAGE = `<!doctype html>
   .wordmark { font-family:var(--display); font-weight:700; font-size:21px; letter-spacing:-0.01em; }
   .wordmark b { color:var(--safe); font-weight:700; }
   .eyebrow { font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--faint); }
+  .doclink { font-family:var(--mono); font-size:12px; letter-spacing:0.04em; color:var(--muted); text-decoration:none;
+             border:1px solid var(--line-2); border-radius:9px; padding:8px 13px; }
+  .doclink:hover { color:var(--text); border-color:var(--safe); }
 
   .lede { color:#C2C8D4; font-size:15px; line-height:1.7; max-width:46ch; margin:18px 0 4px; font-weight:400; }
   .lede b { color:var(--text); font-weight:500; }
@@ -358,6 +361,8 @@ export const PAGE = `<!doctype html>
         <div class="wordmark">Rug<b>Check</b></div>
         <div class="eyebrow">AI on-chain safety analyst</div>
       </div>
+      <span style="flex:1"></span>
+      <a class="doclink" href="/docs">Docs</a>
     </header>
 
     <p class="lede">Paste any token contract. RugCheck reads it against OKX on-chain security data,

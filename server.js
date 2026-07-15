@@ -31,6 +31,7 @@ import { rugcheck } from "./analyze.js";
 import { aiEnabled, aiModel, enrich, chat } from "./ai.js";
 import { handleMcpPost } from "./mcp.js";
 import { PAGE } from "./page.js";
+import { DOCS } from "./docs.js";
 
 const PORT = process.env.PORT || 8787;
 const EVM = /^0x[a-fA-F0-9]{40}$/;
@@ -98,6 +99,11 @@ const server = http.createServer(async (req, res) => {
     } catch (e) {
       return json(res, 200, { jsonrpc: "2.0", id: null, error: { code: -32603, message: e.message } });
     }
+  }
+
+  if (url.pathname === "/docs" || url.pathname === "/docs.html") {
+    res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
+    return res.end(DOCS);
   }
 
   if (url.pathname === "/" || url.pathname === "/index.html") {

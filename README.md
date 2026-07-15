@@ -63,6 +63,7 @@ is enforced in the system prompt — the model explains the report and nothing e
 | Method | Route | Description |
 |---|---|---|
 | `GET` | `/` | Self-contained demo web UI |
+| `GET` | `/docs` | Developer documentation page |
 | `GET` | `/health` | `{ ok: true }` — liveness (use for uptime pings) |
 | `GET` | `/ai-status` | Whether the AI layer is enabled + the model |
 | `GET` | `/rugcheck?address=&chain=&ai=1&mode=` | Deterministic report (+ optional AI analysis) |
