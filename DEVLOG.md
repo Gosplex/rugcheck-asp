@@ -83,9 +83,20 @@ Building the API-service endpoint first keeps both options open (an endpoint can
       `rugcheck` tool over the same engine — for the A2MCP path. UI + REST untouched. Verified locally:
       initialize / tools/list / tools/call (USDC → OK) / bad-address error / notification 202.
 
+- [x] Confirmed via official OKX docs that **free A2MCP is supported** (price 0, HTTP 200, no x402) —
+      so no payment plumbing needed. Our `/mcp` already returns 200, matching the free-endpoint spec.
+- [x] Registered the ASP on-chain (XLayer, chainIndex 196): **RugCheck AI**, Agent **#5996**,
+      tx `0xf90a3c26701377e872b869ca4ad3a631d4debccbcd6cf8b3f60388b4102b7fe6`. Endpoint
+      `https://rugcheck-asp.onrender.com/mcp`, type A2MCP, fee 0. Listing passed OKX `validate-listing`
+      (`pass:true`). Avatar: `assets/logo-512.png` (512², 272 KB) uploaded to the OKX CDN.
+- [x] Set up the OKX A2A comms runtime (required to activate): Node 22 via nvm → `npm i -g
+      @okxweb3/a2a-node` (0.1.9) → `okx-a2a doctor --fix` (`ready:true`, daemon pid running,
+      launchd autostart installed).
+- [x] Submitted activation for review (`activate` + `submitApproval`) → **pending OKX approval**;
+      review messages arrive in `en-US` via the comms channel.
+
 ### Remaining
-- [ ] Confirm OKX's A2MCP transport expectation matches Streamable HTTP; decide fee (free first vs x402).
-- [ ] Register + activate the ASP on OKX.AI with `https://rugcheck-asp.onrender.com/mcp`; pass review.
+- [ ] Await OKX approval → RugCheck AI becomes publicly listed/hireable.
 - [ ] Record demo, post on X (#OKXAI), submit Google Form before the deadline.
 
 ## Notes / risks
