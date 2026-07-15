@@ -21,7 +21,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 let LOGO = null;
 function logo() {
   if (LOGO === null) {
-    try { LOGO = fs.readFileSync(path.join(HERE, "assets", "logo.png")); }
+    try { LOGO = fs.readFileSync(path.join(HERE, "assets", "logo-512.png")); }
     catch { LOGO = false; }
   }
   return LOGO;
