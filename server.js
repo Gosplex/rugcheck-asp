@@ -29,6 +29,7 @@ function logo() {
 
 import { rugcheck } from "./analyze.js";
 import { aiEnabled, aiModel, enrich, chat } from "./ai.js";
+import { handleMcpPost } from "./mcp.js";
 import { PAGE } from "./page.js";
 
 const PORT = process.env.PORT || 8787;
@@ -75,6 +76,28 @@ const server = http.createServer(async (req, res) => {
 
   if (url.pathname === "/ai-status") {
     return json(res, 200, { enabled: aiEnabled(), model: aiEnabled() ? aiModel() : null });
+  }
+
+  // MCP endpoint (Streamable HTTP, stateless) — how other agents call RugCheck
+  // via OKX.AI's A2MCP path. Same engine as /rugcheck, exposed as a `rugcheck` tool.
+  if (url.pathname === "/mcp") {
+    if (req.method !== "POST") {
+      return json(res, 405, { ok: false, error: "MCP endpoint: send JSON-RPC via POST." });
+    }
+    try {
+      const { status, payload } = await handleMcpPost(await readBody(req));
+      if (payload === null) {
+        res.writeHead(status, {
+          "access-control-allow-origin": "*",
+          "access-control-allow-headers": "content-type, mcp-protocol-version, mcp-session-id",
+          "access-control-allow-methods": "GET, POST, OPTIONS",
+        });
+        return res.end();
+      }
+      return json(res, status, payload);
+    } catch (e) {
+      return json(res, 200, { jsonrpc: "2.0", id: null, error: { code: -32603, message: e.message } });
+    }
   }
 
   if (url.pathname === "/" || url.pathname === "/index.html") {

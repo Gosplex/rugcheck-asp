@@ -67,7 +67,12 @@ is enforced in the system prompt — the model explains the report and nothing e
 | `GET` | `/ai-status` | Whether the AI layer is enabled + the model |
 | `GET` | `/rugcheck?address=&chain=&ai=1&mode=` | Deterministic report (+ optional AI analysis) |
 | `POST` | `/chat` | Grounded follow-up: `{ report, messages, mode }` |
+| `POST` | `/mcp` | **MCP endpoint** (Streamable HTTP, stateless) — exposes a `rugcheck` tool for agents (OKX.AI A2MCP) |
 | `GET` | `/logo.png` | Brand logo / favicon |
+
+The `/mcp` endpoint speaks JSON-RPC (`initialize` · `tools/list` · `tools/call`) and exposes one tool,
+`rugcheck(address, chain, include_ai, mode)`, returning the same report as `/rugcheck` (as both a text
+block and `structuredContent`). It's the machine-facing surface; humans use the UI and `/rugcheck`.
 
 `chain` accepts `ethereum`, `bsc`, `base`, `arbitrum`, `polygon`, `optimism`, `avalanche`, `solana`.
 `mode` is `beginner` | `trader` | `developer`. Deep links auto-run: `/?address=0x…&chain=bsc&mode=trader`.

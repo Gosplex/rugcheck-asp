@@ -72,13 +72,20 @@ Building the API-service endpoint first keeps both options open (an endpoint can
 - [x] Verified live in production: `/health` 200, `/ai-status` enabled (`anthropic/claude-opus-4.8`),
       and a full `/rugcheck?...&ai=1` scan of USDC → 🟢 OK / LOW / score 24 with an AI summary and no
       `aiError` — the OKX HTTP data path + AI enrichment both work on the host.
+- [x] Keep-warm: UptimeRobot pings `/health` every 5 min so the Render free instance never idles out
+      (~15-min sleep → ~50s cold start otherwise). Note: intermittent `x-render-routing: no-server`
+      404s were seen during a deploy transition, unrelated to any query param (`/health` flapped too).
+
+- [x] Accepted OKX.AI marketplace terms (one-time wallet consent for `0x841bd75…a43e19`; ASP pre-check
+      now returns `canCreate:true`, aspCount 0).
+
+- [x] Built the **MCP endpoint** (`mcp.js` → `POST /mcp`, Streamable HTTP, stateless) exposing a
+      `rugcheck` tool over the same engine — for the A2MCP path. UI + REST untouched. Verified locally:
+      initialize / tools/list / tools/call (USDC → OK) / bad-address error / notification 202.
 
 ### Remaining
-
-- [ ] Keep-warm: point a free uptime monitor (UptimeRobot / cron-job.org) at `/health` every ~10 min
-      (Render free tier sleeps after ~15 min idle → ~50s cold start otherwise).
-- [ ] Accept OKX.AI marketplace terms (one-time wallet consent).
-- [ ] Register + activate ASP on OKX.AI with the deployed URL; pass review.
+- [ ] Confirm OKX's A2MCP transport expectation matches Streamable HTTP; decide fee (free first vs x402).
+- [ ] Register + activate the ASP on OKX.AI with `https://rugcheck-asp.onrender.com/mcp`; pass review.
 - [ ] Record demo, post on X (#OKXAI), submit Google Form before the deadline.
 
 ## Notes / risks
