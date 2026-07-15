@@ -1,0 +1,12 @@
+{
+  "name": "rugcheck-asp",
+  "version": "0.1.0",
+  "description": "RugCheck — token-safety agent for OKX.AI. Paste a token, get a plain-English safety verdict.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node cli-check.js"
+  },
+  "license": "MIT"
+}
