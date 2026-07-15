@@ -2,6 +2,8 @@
 
 Internal build notes for the **OKX.AI Genesis Hackathon**. Product docs live in [README.md](README.md).
 
+**Live:** https://rugcheck-asp.onrender.com (Render) · repo https://github.com/Gosplex/rugcheck-asp
+
 ## Why this project
 
 - **Hackathon:** OKX.AI Genesis Hackathon — $100,000 prize pool, deadline **Jul 17, 2026 23:59 UTC**.
@@ -66,11 +68,15 @@ Building the API-service endpoint first keeps both options open (an endpoint can
         `OKX_API_KEY` is set, else CLI; force with `RUGCHECK_SOURCE=http|cli`.
       - Smoke: USDC/ETH → 🟢 OK, PEPE/ETH → 🟢 OK, USDC-on-Solana (wrong chain) → UNKNOWN/`found:false`.
 
+- [x] Deployed to Render → **https://rugcheck-asp.onrender.com** (env vars set in the dashboard).
+- [x] Verified live in production: `/health` 200, `/ai-status` enabled (`anthropic/claude-opus-4.8`),
+      and a full `/rugcheck?...&ai=1` scan of USDC → 🟢 OK / LOW / score 24 with an AI summary and no
+      `aiError` — the OKX HTTP data path + AI enrichment both work on the host.
+
 ### Remaining
 
-- [ ] Deploy to Render → permanent `https://` URL. Set env vars on the host (see README → Configuration).
-- [ ] Keep-warm: point a free uptime monitor (UptimeRobot / cron-job.org) at `/health` every ~10 min.
-- [ ] Test the live AI path (enrichment + chat) on the deployed host.
+- [ ] Keep-warm: point a free uptime monitor (UptimeRobot / cron-job.org) at `/health` every ~10 min
+      (Render free tier sleeps after ~15 min idle → ~50s cold start otherwise).
 - [ ] Accept OKX.AI marketplace terms (one-time wallet consent).
 - [ ] Register + activate ASP on OKX.AI with the deployed URL; pass review.
 - [ ] Record demo, post on X (#OKXAI), submit Google Form before the deadline.
