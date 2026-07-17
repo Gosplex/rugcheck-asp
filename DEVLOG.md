@@ -94,10 +94,14 @@ Building the API-service endpoint first keeps both options open (an endpoint can
       launchd autostart installed).
 - [x] Submitted activation for review (`activate` + `submitApproval`) → **pending OKX approval**;
       review messages arrive in `en-US` via the comms channel.
+- [x] **Approved — RugCheck AI is now LIVE on OKX.AI** (2026-07-17). Passed review; the agent is
+      visible + searchable on the platform and eligible to be recommended to other users and Agents.
+      Future updates go through the Agent conversation interface.
+- [x] Recorded the demo, posted on X (#OKXAI), and submitted the Google Form (2026-07-17) — all
+      hackathon deliverables complete before the Jul 17 23:59 UTC deadline.
 
 ### Remaining
-- [ ] Await OKX approval → RugCheck AI becomes publicly listed/hireable.
-- [ ] Record demo, post on X (#OKXAI), submit Google Form before the deadline.
+- _Nothing — build, listing, and submission all complete._
 
 ## Notes / risks
 

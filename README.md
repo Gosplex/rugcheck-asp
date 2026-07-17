@@ -18,8 +18,21 @@ minor, a confidence score, scam-pattern recognition, and a conversational follow
 AI **can only explain data that's already in the report** — it never invents prices, holders, or
 flags, and never gives financial advice.
 
-![RugCheck — Explain This](assets/screenshot-explain.png)
-<!-- placeholder: verdict dial + AI report, with an inline "Explain" expanded -->
+## See it in action
+
+<table>
+  <tr>
+    <td width="50%"><img src="assets/1.png" alt="Paste a token address and scan" /><br/><sub><b>1. Scan</b> — paste any token contract (EVM or Solana), pick a chain, hit Scan.</sub></td>
+    <td width="50%"><img src="assets/2.png" alt="Verdict, risk dial, and AI summary" /><br/><sub><b>2. Verdict</b> — a 🟢/🟡/🔴 call with a 0–100 risk dial and a plain-English AI summary.</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="assets/3.png" alt="Per-signal Explain This and flags" /><br/><sub><b>3. Explain</b> — every signal and flag has an <i>Explain</i> button: what it means, why it matters.</sub></td>
+    <td width="50%"><img src="assets/5.png" alt="Ask the analyst grounded chat" /><br/><sub><b>4. Ask</b> — a grounded chat answers follow-ups using only the report's data.</sub></td>
+  </tr>
+  <tr>
+    <td colspan="2"><img src="assets/4.png" alt="Post on X and Share result card" /><br/><sub><b>5. Share</b> — export a branded result card or open a prefilled <code>#OKXAI</code> post.</sub></td>
+  </tr>
+</table>
 
 ## How it works
 
